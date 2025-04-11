@@ -1,4 +1,4 @@
-##What is it?
+## What is it?
 It is Wordle clone made in Python 
 
 ## How to run:
