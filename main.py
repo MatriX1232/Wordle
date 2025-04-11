@@ -16,14 +16,46 @@ def print_cage(characters: str, colors: list) -> None:
     print()
 
 
+def double_letters(word):
+    for i in range (len(word)-1):
+        if word[i] == word[i+1]:
+            return True
+    return False
+
+
 def get_random_word() -> str:
     import random
 
     words = []
     with open("words.txt", "r") as file:
         words = file.read().splitlines()
-    return random.choice(words)
+    word = random.choice(words)
+    while double_letters(word):     # a little bit of cheating
+        word = random.choice(words)
+    return word
 
 
 if __name__ == "__main__":
-    print_cage(get_random_word(), [Color.green, Color.red, Color.blue, Color.cyan, Color.yellow])
+    WORD = get_random_word().upper()
+    print_cage(WORD, [Color.grey] * len(WORD))
+
+    i = 0
+    correct = False
+    while not correct and i < 6:
+        user_input = ""
+        while len(user_input) != len(WORD):
+            user_input = input("Enter word:").upper()
+        colors = []
+        correct = True
+        for i, char in enumerate(user_input):
+            if char == WORD[i]:
+                colors.append(Color.green)
+            elif char in WORD:
+                colors.append(Color.yellow)
+                correct = False
+            else:
+                colors.append(Color.red)
+                correct = False
+        print_cage(user_input, colors)
+        i += 1
+

@@ -11,6 +11,8 @@ class Color:
     magenta = "\033[35m"
     white = "\033[37m"
     black = "\033[30m"
+    grey = "\033[90m"
+    light_red = "\033[91m"
 
     # Bold preset colors
     bold_red = "\033[1;31m"
@@ -21,6 +23,8 @@ class Color:
     bold_magenta = "\033[1;35m"
     bold_white = "\033[1;37m"
     bold_black = "\033[1;30m"
+    bold_grey = "\033[1;90m"
+    bold_light_red = "\033[1;91m"
 
     @staticmethod
     def rgb(r: int, g: int, b: int, bold: bool = False):
